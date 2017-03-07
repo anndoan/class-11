@@ -66,6 +66,8 @@ cleaned_data %>%
 
 cleaned_data %>%
   filter(BP == "cell wall organization and biogenesis") %>%
+  group_by(name) %>%
+  slice(1:5) %>%
   plot_expression_data()
 ```
 
@@ -74,6 +76,8 @@ cleaned_data %>%
 - Make a similar plot for uracil biosynthesis genes.
 
 ```{r}
+cleaned_data %>%
+  filter(grepl('URA', name)) %>% plot_expression_data()
 ```
 
 - What happens if you leave out `scales = "free_y"` from the `facet_wrap` call?
